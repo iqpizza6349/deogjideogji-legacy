@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -28,7 +29,7 @@ public class Post {
     @Column(columnDefinition = "varchar(255) default 'FFB400'") // 기본값: 노랑색
     private String color; // 16 진수로 나타낼 수 있음
 
-    @Column(columnDefinition = "integer default 0")  // 기본값: 맑은 고딕
+    @Enumerated(EnumType.STRING)
     private Font font;
 
     @Column(columnDefinition = "boolean default false")
