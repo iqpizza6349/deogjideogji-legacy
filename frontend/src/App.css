@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 휴먼편지체;
+  src: url("./style/fonts/HMFMPYUN.TTF");
+}

@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Template from "./component/Template";
+import Logo from "./component/Logo";
+import GoggleButton from "./component/GoggleButton";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Template children={
+          <div>
+              <div>
+                  <Logo/>
+              </div>
+              <div>
+                    <GoggleButton/>
+              </div>
+          </div>
+      }/>
     </div>
   );
 }
