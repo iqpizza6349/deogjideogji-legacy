@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {GoogleLogin} from 'react-google-login';
 import styled from 'styled-components';
 
-const clientId = "12158387066-tru41d46r9rc5lt69qe2jtmpv27dblts.apps.googleusercontent.com";
+const clientId = "";
 
 class GoggleButton extends Component {
 
