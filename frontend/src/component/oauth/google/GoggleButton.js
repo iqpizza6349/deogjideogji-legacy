@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {GoogleLogin} from 'react-google-login';
 import styled from 'styled-components';
 
-const clientId = "";
+const clientId = process.env.REACT_APP_GOOGLE_ID;
 
 class GoggleButton extends Component {
 
@@ -34,7 +34,8 @@ class GoggleButton extends Component {
                     buttonText="Sign in with Google"
                     onSuccess={this.responseGoogle}
                     onFailure={this.responseFail}
-                    />
+                    theme="dark"
+                />
             </Container>
         );
     }

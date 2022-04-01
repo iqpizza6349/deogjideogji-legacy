@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TemplateBlock = styled.div`
-width: 512px;
-height: 600px;
+width: 600px;
+height: 720px;
 
 position: relative; 
 background : white;

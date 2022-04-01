@@ -1,7 +1,7 @@
 import './App.css';
 import Template from "./component/Template";
 import Logo from "./component/Logo";
-import GoggleButton from "./component/GoggleButton";
+import GoggleButton from "./component/oauth/google/GoggleButton";
 
 function App() {
   return (

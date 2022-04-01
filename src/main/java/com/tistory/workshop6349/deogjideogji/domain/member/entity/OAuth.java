@@ -17,13 +17,9 @@ import java.io.Serializable;
 public class OAuth implements Serializable {
 
     @NotNull
-    @Column(unique = true)
-    private String email;
+    private String username;
 
     @NotNull
     private String token;
-
-    @NotNull
-    private String provider;
 
 }
