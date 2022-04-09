@@ -1,20 +1,23 @@
 package com.tistory.workshop6349.deogjideogji.domain.member.controller;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.tistory.workshop6349.deogjideogji.domain.member.dto.MemberDto;
+import com.tistory.workshop6349.deogjideogji.domain.member.dto.OAuthDto;
+import com.tistory.workshop6349.deogjideogji.domain.member.service.OAuthLoginServiceImpl;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
-
-@Slf4j
 @RequestMapping("/oauth")
+@RequiredArgsConstructor
 @RestController
 public class OAuthController {
 
-    @PostMapping("/google/rollback")
-    public void get() {
-        log.info("요청 들어옴");
-    }
+    private final OAuthLoginServiceImpl oAuthLoginService;
 
+    @PostMapping("/google/rollback")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public MemberDto rollback(@RequestBody OAuthDto oAuthDto) {
+        return oAuthLoginService.login(oAuthDto);
+    }
 
 }

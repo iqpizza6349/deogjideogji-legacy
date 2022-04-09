@@ -19,24 +19,24 @@ class GoogleButton extends Component {
 
     // Google Login
     responseGoogle = (res) => {
-        // console.log(res);
+        let oauthData = res.profileObj;
 
-        const params = new URLSearchParams();
-        params.append("idToken", res.tokenObj.id_token);
-
-        console.log(res.tokenObj.id_token);
+        const data = {
+            email: oauthData.email,
+            name: oauthData.name,
+            image_url: oauthData.imageUrl
+        }
 
         let config = {
             headers: {
-                'Content-Type': "application/x-www-form-urlencoded"
+                'Content-Type': "application/json"
             }
         };
 
         const googleLogin = async () => {
-            const res = await axios.post(process.env.REACT_APP_GOOGLE_REDIRECT, params, config);
+            const res = await axios.post(process.env.REACT_APP_GOOGLE_REDIRECT, data, config);
 
-            console.log(res.data.token.access);
-            console.log(res.data.token.refresh);
+            console.log(res.status);
         }
 
         googleLogin();

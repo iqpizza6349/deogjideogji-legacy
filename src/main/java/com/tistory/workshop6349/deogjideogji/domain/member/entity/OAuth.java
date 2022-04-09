@@ -22,9 +22,6 @@ public class OAuth implements Serializable {
     private String email;
 
     @NotNull
-    private String token;
-
-    @NotNull
     private String imageUrl;
 
 
