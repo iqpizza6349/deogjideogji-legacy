@@ -1,7 +1,7 @@
 import './App.css';
 import Template from "./component/Template";
 import Logo from "./component/Logo";
-import GoggleButton from "./component/oauth/google/GoggleButton";
+import GoogleButton from "./component/oauth/google/GoogleButton";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
                   <Logo/>
               </div>
               <div>
-                    <GoggleButton/>
+                    <GoogleButton/>
               </div>
           </div>
       }/>

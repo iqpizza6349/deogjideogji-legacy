@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -20,6 +19,13 @@ public class OAuth implements Serializable {
     private String username;
 
     @NotNull
+    private String email;
+
+    @NotNull
     private String token;
+
+    @NotNull
+    private String imageUrl;
+
 
 }

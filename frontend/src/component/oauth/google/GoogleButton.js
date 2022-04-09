@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 import {GoogleLogin} from 'react-google-login';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const clientId = process.env.REACT_APP_GOOGLE_ID;
 
-class GoggleButton extends Component {
+class GoogleButton extends Component {
 
     constructor(props) {
         super(props);
@@ -18,7 +19,27 @@ class GoggleButton extends Component {
 
     // Google Login
     responseGoogle = (res) => {
-        console.log(res);
+        // console.log(res);
+
+        const params = new URLSearchParams();
+        params.append("idToken", res.tokenObj.id_token);
+
+        console.log(res.tokenObj.id_token);
+
+        let config = {
+            headers: {
+                'Content-Type': "application/x-www-form-urlencoded"
+            }
+        };
+
+        const googleLogin = async () => {
+            const res = await axios.post(process.env.REACT_APP_GOOGLE_REDIRECT, params, config);
+
+            console.log(res.data.token.access);
+            console.log(res.data.token.refresh);
+        }
+
+        googleLogin();
     }
 
     // Login Fail
@@ -51,4 +72,4 @@ const Container = styled.div`
     left: calc(50% - 100px);
 `
 
-export default GoggleButton;
+export default GoogleButton;
