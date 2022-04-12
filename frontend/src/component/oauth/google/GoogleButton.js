@@ -1,24 +1,17 @@
-import React, {Component} from "react";
+import React from "react";
 import {GoogleLogin} from 'react-google-login';
 import styled from 'styled-components';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 const clientId = process.env.REACT_APP_GOOGLE_ID;
 
-class GoogleButton extends Component {
+const GoogleButton = () => {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            id: '',
-            name: '',
-            provider: '',
-        }
-    }
+    const navigate = useNavigate();
 
     // Google Login
-    responseGoogle = (res) => {
+    const responseGoogle = (res) => {
         let oauthData = res.profileObj;
 
         const data = {
@@ -37,29 +30,35 @@ class GoogleButton extends Component {
             const res = await axios.post(process.env.REACT_APP_GOOGLE_REDIRECT, data, config);
 
             console.log(res.status);
+            return res;
         }
 
-        googleLogin();
+        googleLogin().then(res => {
+
+            if (res.status === 201) {
+                navigate('/sad');
+            }
+        }).catch(error => {
+            console.log(error);
+        });
     }
 
     // Login Fail
-    responseFail = (err) => {
+    const responseFail = (err) => {
         console.error(err);
     }
 
-    render() {
-        return (
-            <Container>
-                <GoogleLogin
-                    clientId={clientId}
-                    buttonText="Sign in with Google"
-                    onSuccess={this.responseGoogle}
-                    onFailure={this.responseFail}
-                    theme="dark"
-                />
-            </Container>
-        );
-    }
+    return (
+        <Container>
+            <GoogleLogin
+                clientId={clientId}
+                buttonText="Sign in with Google"
+                onSuccess={responseGoogle}
+                onFailure={responseFail}
+                theme="dark"
+            />
+        </Container>
+    );
 }
 
 const Container = styled.div`

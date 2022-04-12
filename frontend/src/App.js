@@ -1,22 +1,14 @@
 import './App.css';
-import Template from "./component/Template";
-import Logo from "./component/Logo";
-import GoogleButton from "./component/oauth/google/GoogleButton";
+import Home from "./component/Home";
+import Any from "./component/Any";
+import {Route, Routes} from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Template children={
-          <div>
-              <div>
-                  <Logo/>
-              </div>
-              <div>
-                    <GoogleButton/>
-              </div>
-          </div>
-      }/>
-    </div>
+      <Routes>
+        <Route path="/*" element={<Home/>}/>
+        <Route path="sad/*" element={<Any/>}/>
+      </Routes>
   );
 }
 
