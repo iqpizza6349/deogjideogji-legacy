@@ -11,8 +11,8 @@ const GoogleButton = () => {
     const navigate = useNavigate();
 
     // Google Login
-    const responseGoogle = (res) => {
-        let oauthData = res.profileObj;
+    const responseGoogle = (response) => {
+        let oauthData = response.profileObj;
 
         const data = {
             email: oauthData.email,
@@ -34,8 +34,8 @@ const GoogleButton = () => {
         }
 
         googleLogin().then(res => {
-
-            if (res.status === 201) {
+            if (res.status === 201 || res.status === 409) {
+                localStorage.setItem("token", response.googleId);
                 navigate('/sad');
             }
         }).catch(error => {
